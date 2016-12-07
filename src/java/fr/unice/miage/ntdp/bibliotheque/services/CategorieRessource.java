@@ -15,10 +15,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -38,15 +40,16 @@ public class CategorieRessource extends CategorieFacade{
      return super.findAll();
     }
 
-    /*@GET
+    @GET
+    @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-   public String GetCategorie(){
-        return "La ressource demandée existe!";
+    public Categorie GetCategorie(@PathParam("id")Long id){
+        return super.find(id);
     }
     
-    @POST
+    /*@POST
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public String PostCategorie(){
+    public String PostCategorie(@FormParam("nom")String nom, @FormParam("description")String description){
         return "La ressource demandée existe!";
     }*/
 
