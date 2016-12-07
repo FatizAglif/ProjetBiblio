@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAuteurTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_nationalite}" for="nationalite" />
+                    <h:inputText id="nationalite" value="#{auteurController.selected.nationalite}" title="#{bundle.EditAuteurTitle_nationalite}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{auteurController.selected.type}" title="#{bundle.EditAuteurTitle_type}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_aProposDe}" for="aProposDe" />
+                    <h:inputText id="aProposDe" value="#{auteurController.selected.aProposDe}" title="#{bundle.EditAuteurTitle_aProposDe}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{auteurController.selected.id}" title="#{bundle.EditAuteurTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_nom}" for="nom" />
+                    <h:inputText id="nom" value="#{auteurController.selected.nom}" title="#{bundle.EditAuteurTitle_nom}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_prenom}" for="prenom" />
+                    <h:inputText id="prenom" value="#{auteurController.selected.prenom}" title="#{bundle.EditAuteurTitle_prenom}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_sexe}" for="sexe" />
+                    <h:inputText id="sexe" value="#{auteurController.selected.sexe}" title="#{bundle.EditAuteurTitle_sexe}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{auteurController.selected.photo}" title="#{bundle.EditAuteurTitle_photo}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{auteurController.selected.email}" title="#{bundle.EditAuteurTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditAuteurLabel_dateDenaissance}" for="dateDenaissance" />
+                    <h:inputText id="dateDenaissance" value="#{auteurController.selected.dateDenaissance}" title="#{bundle.EditAuteurTitle_dateDenaissance}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{auteurController.update}" value="#{bundle.EditAuteurSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAuteurViewLink}"/>
+                <br />
+                <h:commandLink action="#{auteurController.prepareList}" value="#{bundle.EditAuteurShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAuteurIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

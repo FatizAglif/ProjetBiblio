@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLivreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLivreEmpty}" rendered="#{livreController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{livreController.items.rowCount > 0}">
+                    <h:outputText value="#{livreController.pagination.pageFirstItem + 1}..#{livreController.pagination.pageLastItem + 1}/#{livreController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{livreController.previous}" value="#{bundle.Previous} #{livreController.pagination.pageSize}" rendered="#{livreController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{livreController.next}" value="#{bundle.Next} #{livreController.pagination.pageSize}" rendered="#{livreController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{livreController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_titre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_resume}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resume}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_isbn}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.isbn}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_categorie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categorie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_quantite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantite}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_photo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.photo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_publishedDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.publishedDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLivreTitle_ecrit_par}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ecrit_par}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{livreController.prepareView}" value="#{bundle.ListLivreViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{livreController.prepareEdit}" value="#{bundle.ListLivreEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{livreController.destroy}" value="#{bundle.ListLivreDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{livreController.prepareCreate}" value="#{bundle.ListLivreCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLivreIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

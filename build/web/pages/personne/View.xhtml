@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPersonneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPersonneLabel_id}"/>
+                    <h:outputText value="#{personneController.selected.id}" title="#{bundle.ViewPersonneTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_nom}"/>
+                    <h:outputText value="#{personneController.selected.nom}" title="#{bundle.ViewPersonneTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_prenom}"/>
+                    <h:outputText value="#{personneController.selected.prenom}" title="#{bundle.ViewPersonneTitle_prenom}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_sexe}"/>
+                    <h:outputText value="#{personneController.selected.sexe}" title="#{bundle.ViewPersonneTitle_sexe}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_photo}"/>
+                    <h:outputText value="#{personneController.selected.photo}" title="#{bundle.ViewPersonneTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_email}"/>
+                    <h:outputText value="#{personneController.selected.email}" title="#{bundle.ViewPersonneTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewPersonneLabel_dateDenaissance}"/>
+                    <h:outputText value="#{personneController.selected.dateDenaissance}" title="#{bundle.ViewPersonneTitle_dateDenaissance}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personneController.destroyAndView}" value="#{bundle.ViewPersonneDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPersonneEditLink}"/>
+                <br />
+                <h:commandLink action="#{personneController.prepareCreate}" value="#{bundle.ViewPersonneCreateLink}" />
+                <br />
+                <h:commandLink action="#{personneController.prepareList}" value="#{bundle.ViewPersonneShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPersonneIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

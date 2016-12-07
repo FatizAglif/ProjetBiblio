@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLivreTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{livreController.selected.id}" title="#{bundle.CreateLivreTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_titre}" for="titre" />
+                    <h:inputText id="titre" value="#{livreController.selected.titre}" title="#{bundle.CreateLivreTitle_titre}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_resume}" for="resume" />
+                    <h:inputText id="resume" value="#{livreController.selected.resume}" title="#{bundle.CreateLivreTitle_resume}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_isbn}" for="isbn" />
+                    <h:inputText id="isbn" value="#{livreController.selected.isbn}" title="#{bundle.CreateLivreTitle_isbn}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_categorie}" for="categorie" />
+                    <h:selectOneMenu id="categorie" value="#{livreController.selected.categorie}" title="#{bundle.CreateLivreTitle_categorie}" >
+                        <f:selectItems value="#{categorieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_quantite}" for="quantite" />
+                    <h:inputText id="quantite" value="#{livreController.selected.quantite}" title="#{bundle.CreateLivreTitle_quantite}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_photo}" for="photo" />
+                    <h:inputText id="photo" value="#{livreController.selected.photo}" title="#{bundle.CreateLivreTitle_photo}" />
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_publishedDate}" for="publishedDate" />
+                    <h:inputText id="publishedDate" value="#{livreController.selected.publishedDate}" title="#{bundle.CreateLivreTitle_publishedDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateLivreLabel_ecrit_par}" for="ecrit_par" />
+                    <h:selectOneMenu id="ecrit_par" value="#{livreController.selected.ecrit_par}" title="#{bundle.CreateLivreTitle_ecrit_par}" >
+                        <f:selectItems value="#{auteurController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{livreController.create}" value="#{bundle.CreateLivreSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{livreController.prepareList}" value="#{bundle.CreateLivreShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLivreIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

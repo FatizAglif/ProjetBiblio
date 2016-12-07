@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsersLabel_derniereConnexion}"/>
+                    <h:outputText value="#{usersController.selected.derniereConnexion}" title="#{bundle.ViewUsersTitle_derniereConnexion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewUsersLabel_nomUtilisateur}"/>
+                    <h:outputText value="#{usersController.selected.nomUtilisateur}" title="#{bundle.ViewUsersTitle_nomUtilisateur}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_motDePasse}"/>
+                    <h:outputText value="#{usersController.selected.motDePasse}" title="#{bundle.ViewUsersTitle_motDePasse}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_statutCompte}"/>
+                    <h:outputText value="#{usersController.selected.statutCompte}" title="#{bundle.ViewUsersTitle_statutCompte}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_id}"/>
+                    <h:outputText value="#{usersController.selected.id}" title="#{bundle.ViewUsersTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_nom}"/>
+                    <h:outputText value="#{usersController.selected.nom}" title="#{bundle.ViewUsersTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_prenom}"/>
+                    <h:outputText value="#{usersController.selected.prenom}" title="#{bundle.ViewUsersTitle_prenom}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_sexe}"/>
+                    <h:outputText value="#{usersController.selected.sexe}" title="#{bundle.ViewUsersTitle_sexe}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_photo}"/>
+                    <h:outputText value="#{usersController.selected.photo}" title="#{bundle.ViewUsersTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_email}"/>
+                    <h:outputText value="#{usersController.selected.email}" title="#{bundle.ViewUsersTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_dateDenaissance}"/>
+                    <h:outputText value="#{usersController.selected.dateDenaissance}" title="#{bundle.ViewUsersTitle_dateDenaissance}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usersController.destroyAndView}" value="#{bundle.ViewUsersDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsersEditLink}"/>
+                <br />
+                <h:commandLink action="#{usersController.prepareCreate}" value="#{bundle.ViewUsersCreateLink}" />
+                <br />
+                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.ViewUsersShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsersIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

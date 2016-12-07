@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePretTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePretLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pretController.selected.id}" title="#{bundle.CreatePretTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreatePretLabel_livre}" for="livre" />
+                    <h:selectOneMenu id="livre" value="#{pretController.selected.livre}" title="#{bundle.CreatePretTitle_livre}" >
+                        <f:selectItems value="#{livreController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePretLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{pretController.selected.user}" title="#{bundle.CreatePretTitle_user}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePretLabel_debut}" for="debut" />
+                    <h:inputText id="debut" value="#{pretController.selected.debut}" title="#{bundle.CreatePretTitle_debut}" />
+                    <h:outputLabel value="#{bundle.CreatePretLabel_duree}" for="duree" />
+                    <h:inputText id="duree" value="#{pretController.selected.duree}" title="#{bundle.CreatePretTitle_duree}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pretController.create}" value="#{bundle.CreatePretSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pretController.prepareList}" value="#{bundle.CreatePretShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePretIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

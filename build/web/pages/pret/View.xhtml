@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPretTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPretLabel_id}"/>
+                    <h:outputText value="#{pretController.selected.id}" title="#{bundle.ViewPretTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPretLabel_livre}"/>
+                    <h:outputText value="#{pretController.selected.livre}" title="#{bundle.ViewPretTitle_livre}"/>
+                    <h:outputText value="#{bundle.ViewPretLabel_user}"/>
+                    <h:outputText value="#{pretController.selected.user}" title="#{bundle.ViewPretTitle_user}"/>
+                    <h:outputText value="#{bundle.ViewPretLabel_debut}"/>
+                    <h:outputText value="#{pretController.selected.debut}" title="#{bundle.ViewPretTitle_debut}"/>
+                    <h:outputText value="#{bundle.ViewPretLabel_duree}"/>
+                    <h:outputText value="#{pretController.selected.duree}" title="#{bundle.ViewPretTitle_duree}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pretController.destroyAndView}" value="#{bundle.ViewPretDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPretEditLink}"/>
+                <br />
+                <h:commandLink action="#{pretController.prepareCreate}" value="#{bundle.ViewPretCreateLink}" />
+                <br />
+                <h:commandLink action="#{pretController.prepareList}" value="#{bundle.ViewPretShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPretIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

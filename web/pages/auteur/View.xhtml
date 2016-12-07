@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAuteurTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAuteurLabel_nationalite}"/>
+                    <h:outputText value="#{auteurController.selected.nationalite}" title="#{bundle.ViewAuteurTitle_nationalite}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_type}"/>
+                    <h:outputText value="#{auteurController.selected.type}" title="#{bundle.ViewAuteurTitle_type}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_aProposDe}"/>
+                    <h:outputText value="#{auteurController.selected.aProposDe}" title="#{bundle.ViewAuteurTitle_aProposDe}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_id}"/>
+                    <h:outputText value="#{auteurController.selected.id}" title="#{bundle.ViewAuteurTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_nom}"/>
+                    <h:outputText value="#{auteurController.selected.nom}" title="#{bundle.ViewAuteurTitle_nom}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_prenom}"/>
+                    <h:outputText value="#{auteurController.selected.prenom}" title="#{bundle.ViewAuteurTitle_prenom}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_sexe}"/>
+                    <h:outputText value="#{auteurController.selected.sexe}" title="#{bundle.ViewAuteurTitle_sexe}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_photo}"/>
+                    <h:outputText value="#{auteurController.selected.photo}" title="#{bundle.ViewAuteurTitle_photo}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_email}"/>
+                    <h:outputText value="#{auteurController.selected.email}" title="#{bundle.ViewAuteurTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewAuteurLabel_dateDenaissance}"/>
+                    <h:outputText value="#{auteurController.selected.dateDenaissance}" title="#{bundle.ViewAuteurTitle_dateDenaissance}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auteurController.destroyAndView}" value="#{bundle.ViewAuteurDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAuteurEditLink}"/>
+                <br />
+                <h:commandLink action="#{auteurController.prepareCreate}" value="#{bundle.ViewAuteurCreateLink}" />
+                <br />
+                <h:commandLink action="#{auteurController.prepareList}" value="#{bundle.ViewAuteurShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAuteurIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
