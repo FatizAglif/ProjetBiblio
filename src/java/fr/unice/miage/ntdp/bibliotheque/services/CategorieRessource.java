@@ -61,4 +61,50 @@ public class CategorieRessource extends CategorieFacade{
         this.create(c);
         return "La catégorie a été ajoutée.";
     }
+    
+    @Transactional
+    @DELETE
+    @Path("{id}")
+    public String DeleteCategorie(@PathParam("id")Long id){
+        String message = "Test";
+        if(this.find(id)!=null) {
+            this.remove(this.find(id));
+            message = "La catégorie a bien été supprimée.";
+        } else {
+            message = "La catégorie n'existe pas.";
+        }
+        return message;
+    }
+
+    @Transactional
+    @PUT
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes(MediaType. APPLICATION_FORM_URLENCODED)
+    @Path("{id}")
+    public String UpdateCategorie(@PathParam("id")Long id, @FormParam("nom")String nom, @FormParam("description")String description){
+        String message = "";
+        Categorie c = this.find(id);
+        if(c!=null) {
+            c.setNom(nom);
+            c.setDescription(description);
+            this.edit(c);
+            message = "La catégorie a bien été mise à jour.";
+        } else {
+            message = "La catégorie n'existe pas.";
+        }
+        return message;
+    }
+ 
+    @GET
+    @Path("/count")
+    public String CountCategorie(){
+        return "Il y a : " + this.count() + " catégorie(s).";
+    }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("{min}/{max}")
+    public List<Categorie> FindByRangeCategorie(@PathParam("min")int min, @PathParam("max")int max){
+        return this.findRange(new int[] {min,max});
+    }
 }
