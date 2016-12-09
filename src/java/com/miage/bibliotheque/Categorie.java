@@ -51,10 +51,7 @@ public class Categorie implements Serializable {
             return false;
         }
         Categorie other = (Categorie) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return this.nom.equals(other.getNom());
     }
 
     @Override
